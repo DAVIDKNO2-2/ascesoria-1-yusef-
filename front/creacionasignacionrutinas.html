@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Rutinas - NutriFit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* --- HEADER --- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #fff;
+      padding: 15px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-bottom: 2px solid #eee;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: #b30000;
+      font-size: 20px;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a.active {
+      color: #b30000;
+    }
+
+    /* --- MAIN CONTENT --- */
+    main {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      gap: 40px;
+    }
+
+    .form-section, .routine-list {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      flex: 1;
+    }
+
+    .form-section h2, .routine-list h2 {
+      color: #b30000;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      background-color: #b30000;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #990000;
+    }
+
+    /* --- RUTINAS --- */
+    .routine-card {
+      background-color: #fff;
+      border-radius: 10px;
+      border: 1px solid #eee;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    }
+
+    .routine-card h3 {
+      margin-top: 0;
+      color: #b30000;
+      margin-bottom: 5px;
+    }
+
+    .routine-card p,
+    .routine-card ul {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .routine-card ul {
+      padding-left: 18px;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 14px;
+      border-top: 1px solid #eee;
+      background-color: #fff;
+    }
+
+    footer a {
+      color: #b30000;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NutriFit</div>
+    <nav>
+      <a href="#">Registro de Entrenadores</a>
+      <a href="#" class="active">Gestión de rutinas</a>
+      <a href="#">Rutinas Asignadas</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Crear nueva rutina</h2>
+      <div class="form-group">
+        <label for="nombre">Nombre de la rutina</label>
+        <input type="text" id="nombre" placeholder="Ej. Cardio Matutino" />
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" placeholder="Ej. Ejercicios de estiramiento y activación."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="ejercicios">Ejercicios</label>
+        <input type="text" id="ejercicios" placeholder="Ej. Sentadillas, flexiones..." />
+      </div>
+
+      <div class="btn-group">
+        <button class="btn">Agregar</button>
+        <button class="btn">Editar</button>
+        <button class="btn">Actualizar</button>
+        <button class="btn">Eliminar</button>
+      </div>
+    </section>
+
+    <section class="routine-list">
+      <h2>Rutinas Existentes</h2>
+
+      <div class="routine-card">
+        <h3>Rutina Matutina</h3>
+        <p>Descripción breve de la rutina matutina con ejercicios de estiramiento.</p>
+        <ul>
+          <li>Estiramiento de brazos</li>
+          <li>Sentadillas</li>
+          <li>Flexiones de brazos</li>
+        </ul>
+      </div>
+
+      <div class="routine-card">
+        <h3>Rutina de fuerza</h3>
+        <p>Descripción breve de la rutina de fuerza enfocada en levantamiento de pesas.</p>
+        <ul>
+          <li>Prensa bancaria</li>
+          <li>Remo con barra</li>
+          <li>Sentadilla con barra</li>
+        </ul>
+      </div>
+
+      <div class="routine-card">
+        <h3>Rutina cardiovascular</h3>
+        <p>Descripción breve de la rutina cardiovascular para aumentar la resistencia.</p>
+        <ul>
+          <li>Correr 5 km</li>
+          <li>Bicicleta estática</li>
+          <li>Salto de cuerda</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#">Política de Privacidad</a> |
+    <a href="#">Términos de uso</a> |
+    <a href="#">Contacto</a>
+    <br><br>
+    © 2025 NutriFit
+  </footer>
+</body>
+</html>

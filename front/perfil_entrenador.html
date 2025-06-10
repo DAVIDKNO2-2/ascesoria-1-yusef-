@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil del Entrenador - NutriFit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-bottom: 2px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #b30000;
+      font-weight: bold;
+      font-size: 22px;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 30px auto;
+      display: flex;
+      gap: 30px;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile-box {
+      flex: 1 1 350px;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 60px;
+      height: 60px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    .profile-header h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #b30000;
+    }
+
+    .profile-info p {
+      margin: 6px 0;
+      font-size: 14px;
+    }
+
+    .highlight-box {
+      background-color: #ffe5e5;
+      border: 1px solid #b30000;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .highlight-box h4 {
+      margin-bottom: 15px;
+      color: #b30000;
+    }
+
+    .highlight-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .highlight-box li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 6px;
+      border: 1px solid #eee;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .highlight-box li span:first-child {
+      color: #b30000;
+      font-weight: 500;
+    }
+
+    .deliver-btn {
+      background-color: #b30000;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NutriFit</div>
+  </header>
+
+  <main>
+    <!-- Perfil principal -->
+    <section class="profile-box">
+      <div class="profile-header">
+        <div class="avatar"></div>
+        <div>
+          <h3>@John.Trainer</h3>
+          <p>Entrenador certificado</p>
+        </div>
+      </div>
+
+      <div class="profile-info">
+        <p><strong>Nombre:</strong> John Trainer</p>
+        <p><strong>Email:</strong> john.trainer@nutrifit.com</p>
+        <p><strong>Teléfono:</strong> +00 123 456 789 000</p>
+        <p><strong>Fecha de nacimiento:</strong> 08/15/1980</p>
+        <p><strong>Especialidad:</strong> Nutrition, Strength Training</p>
+        <p><strong>Idiomas:</strong> English, German</p>
+        <p><strong>Ubicación:</strong> 123 Fitness Lane, Los Angeles, USA</p>
+        <p><strong>Contacto de emergencia:</strong> +1 987 654 321 000</p>
+        <p><strong>Certificaciones:</strong> Certified Personal Trainer</p>
+        <p><strong>Disponibilidad:</strong> Weekdays, Weekends</p>
+      </div>
+    </section>
+
+    <!-- Rutinas -->
+    <section class="profile-box">
+      <div class="highlight-box">
+        <h4>🏋️‍♂️ Rutinas de fitness</h4>
+        <ul>
+          <li><span>Rutina de entrenamiento de fuerza</span> <span>✔️</span></li>
+          <li><span>Rutina de cardio</span> <span>✔️</span></li>
+          <li><span>Rutina de flexibilidad</span> <span>✔️</span></li>
+          <li><span>Plan de nutrición</span> <span>✔️</span></li>
+        </ul>
+      </div>
+
+      <div class="highlight-box">
+        <h4>📄 Documentos</h4>
+        <ul>
+          <li><span>Documento de identificación</span> <span>📥</span></li>
+          <li><span>Documento de seguro</span> <span>📥</span></li>
+          <li><span>Verificación de antecedentes</span> <span>📥</span></li>
+        </ul>
+        <button class="deliver-btn">Contactar entrenador</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
