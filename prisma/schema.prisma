@@ -87,3 +87,15 @@ enum OrderStatus {
   DELIVERED
   CANCELLED
 }
+
+
+model Rutina {
+  id           Int      @id @default(autoincrement())
+  nombre       String
+  descripcion  String
+  ejercicios   String
+  creadoEn     DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  @@map("rutinas")
+}

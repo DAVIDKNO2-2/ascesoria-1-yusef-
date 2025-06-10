@@ -177,27 +177,29 @@
   <main>
     <section class="form-section">
       <h2>Crear nueva rutina</h2>
-      <div class="form-group">
-        <label for="nombre">Nombre de la rutina</label>
-        <input type="text" id="nombre" placeholder="Ej. Cardio Matutino" />
-      </div>
+      <form id="crearRutinaForm">
+        <div class="form-group">
+          <label for="nombre">Nombre de la rutina</label>
+          <input type="text" id="nombre" placeholder="Ej. Cardio Matutino" required />
+        </div>
 
-      <div class="form-group">
-        <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" placeholder="Ej. Ejercicios de estiramiento y activación."></textarea>
-      </div>
+        <div class="form-group">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" placeholder="Ej. Ejercicios de estiramiento y activación." required></textarea>
+        </div>
 
-      <div class="form-group">
-        <label for="ejercicios">Ejercicios</label>
-        <input type="text" id="ejercicios" placeholder="Ej. Sentadillas, flexiones..." />
-      </div>
+        <div class="form-group">
+          <label for="ejercicios">Ejercicios</label>
+          <input type="text" id="ejercicios" placeholder="Ej. Sentadillas, flexiones..." required />
+        </div>
 
-      <div class="btn-group">
-        <button class="btn">Agregar</button>
-        <button class="btn">Editar</button>
-        <button class="btn">Actualizar</button>
-        <button class="btn">Eliminar</button>
-      </div>
+        <div class="btn-group">
+          <button type="submit" class="btn" id="agregarBtn">Agregar</button>
+          <button type="button" class="btn">Editar</button>
+          <button type="button" class="btn">Actualizar</button>
+          <button type="button" class="btn">Eliminar</button>
+        </div>
+      </form>
     </section>
 
     <section class="routine-list">
@@ -242,5 +244,76 @@
     <br><br>
     © 2025 NutriFit
   </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('crearRutinaForm');
+    const agregarBtn = document.getElementById('agregarBtn');
+
+    if (form && agregarBtn) {
+      const eventType = agregarBtn.type === 'submit' ? 'submit' : 'click';
+
+      form.addEventListener(eventType, async (event) => {
+        event.preventDefault();
+
+        const nombreInput = document.getElementById('nombre');
+        const descripcionInput = document.getElementById('descripcion');
+        const ejerciciosInput = document.getElementById('ejercicios');
+
+        if (!nombreInput || !descripcionInput || !ejerciciosInput) {
+          console.error('One or more form input elements are missing.');
+          alert('Error: Faltan elementos del formulario.');
+          return;
+        }
+        
+        const nombre = nombreInput.value.trim();
+        const descripcion = descripcionInput.value.trim();
+        const ejercicios = ejerciciosInput.value.trim();
+
+        if (!nombre || !descripcion || !ejercicios) {
+          alert('Por favor, complete todos los campos de la rutina.');
+          return;
+        }
+
+        const routineData = {
+          nombre,
+          descripcion,
+          ejercicios,
+        };
+
+        try {
+          const response = await fetch('http://localhost:3000/api/rutina', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(routineData),
+          });
+
+          if (response.ok) {
+            const newRoutine = await response.json();
+            console.log('Rutina creada:', newRoutine);
+            alert('¡Rutina creada exitosamente!');
+            form.reset();
+          } else {
+            const errorData = await response.json();
+            console.error('Error al crear rutina:', response.status, errorData);
+            alert(`Error al crear rutina: ${errorData.error || response.statusText}`);
+          }
+        } catch (error) {
+          console.error('Error de red o JavaScript al crear rutina:', error);
+          alert('Error de conexión al intentar crear la rutina.');
+        }
+      });
+    } else {
+      console.error("Form or 'Agregar' button not found.");
+    }
+  });
+</script>
+
 </body>
 </html>
+
+
+
+
