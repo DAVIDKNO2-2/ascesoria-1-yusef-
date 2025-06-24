@@ -1,0 +1,13 @@
+
+<script>
+    fetch('https://exercisedb.p.rapidapi.com/exercises?limit=10&offset=0', {
+  method: 'GET',
+  headers: {
+    'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
+    'x-rapidapi-key': '1c0a5237b1msh39ee394c73853b8p1a2b6cjsnd5e0840b6583'
+  }
+})
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+</script>
